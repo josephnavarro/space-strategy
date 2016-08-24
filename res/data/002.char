@@ -1,0 +1,48 @@
+.name Claude
+.level 1
+.hp 19
+.atk 7
+.def 8
+.spd 5
+.move 5
+.range 1
+
+.set Unarmed
+.atk 0
+.def 0
+.spd 0
+.move 1
+.range 0
+.image 0 2
+.uses -1
+.end
+
+.set Blaster
+.atk 2
+.def 0
+.spd 0
+.move 0
+.range 1 1
+.image 1 2
+.uses 10
+.end
+
+.set Plasma
+.atk 0
+.def 1
+.spd 0
+.move 0
+.range 1
+.image 7 2
+.uses 10
+.end
+
+.set Blade
+.atk 3
+.def 0
+.spd 0
+.move 0
+.range 0
+.image 11 2
+.uses 10
+.end

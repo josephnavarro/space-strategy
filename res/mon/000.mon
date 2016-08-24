@@ -1,0 +1,17 @@
+.name Parasite
+.hp 25
+.level 4
+.atk 7
+.def 4
+.spd 4
+.move 5
+.range 1
+
+.set Tendrils
+.atk 8
+.def 0
+.move 0
+.range 0
+.image 0 30
+.uses -1
+.end

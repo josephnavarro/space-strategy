@@ -1,0 +1,127 @@
+.objective 2
+.music 1
+.block 0
+
+.intro
+Chapter 1
+
+This scrolling text is meant
+to introduce the plot for the
+current chapter. Usually, this
+text should be about three short
+paragraphs in length.
+
+Anyway, there's no plot right
+now, since this is just a demo.
+That being said, I hope you
+enjoy this game! I spent a lot
+of time these past two weeks
+trying to get to this point.
+
+The controls are arrow keys to
+move, Z to select, X to cancel,
+and A to cycle through units.
+.endintro
+
+.prelevel
+.cursor 15 0
+.start 14 25 0
+.start 15 25 1
+.start 16 25 2
+.start 17 25 3
+.monster 1 11 19
+.monster 2 20 19
+.monster 1 13 10
+.monster 1 15 8
+.monster 2 16 8
+.monster 2 18 10
+.monster 2 15 14
+.monster 2 15 19
+.monster 1 7 15
+.monster 1 7 20
+.monster 2 24 15
+.monster 2 24 20
+.monster 0 20 21 Boss
+.monster 0 11 21 Boss
+.monster 1 12 25
+.monster 2 19 25
+
+.talk 14 25
+"This is the start of some pre-chapter dialogue."
+.endtalk
+
+.talk 15 25
+"Here's some more text. This one's multiple lines long."
+
+
+"If more than three lines are used, dialogue goes to the
+next page."
+.endtalk
+
+.talk 16 25
+"Notice how the cursor moves from character to character
+as the dialogue continues."
+.endtalk
+
+.talk 17 25
+"That's all for this intro! Now on towards the first
+mission!"
+.endtalk
+
+.talk 11 21
+.endtalk
+
+.talk 20 21
+.endtalk
+
+.talk 14 25
+"Those are the bosses. You must defeat them if you want
+to clear this chapter."
+
+"And we're your units. Good luck!"
+.endtalk
+
+.postlevel
+.cursor 15 0
+.start 14 25 0
+.start 15 25 1
+.start 16 25 2
+.start 17 25 3
+.monster 0 15 23 Boss
+.talk 15 23
+"Arrgh! You defeated me! It's over! My life is over!
+Also, the chapter is over!"
+.endtalk
+
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 0d 08 2f 08 08 2f 08 0e 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 0d 08 10 00 2b 00 00 2a 00 0f 08 0e 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 0d 10 00 00 2b 2a 2c 00 00 00 2a 2a 0f 0e 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 0d 08 13 00 2a 00 00 2a 00 00 2b 00 00 00 00 14 2f 0e 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 0b 00 30 00 00 00 00 00 2c 00 00 00 00 00 00 0b 00 30 22 22 22 22 22 22 22 
+22 22 22 22 22 22 0d 10 2b 0b 2b 00 00 00 2c 00 2c 00 00 00 2b 2b 30 2a 0f 0e 22 22 22 22 22 22 
+22 22 22 22 22 22 0b 2a 00 0c 00 00 0d 08 09 00 2b 07 08 0e 00 00 0c 00 00 0b 22 22 22 22 22 22 
+22 22 22 22 22 0d 10 2b 00 00 2a 00 0b 2b 2a 00 00 00 00 0b 00 00 2a 2c 00 0f 0e 22 22 22 22 22 
+22 22 22 22 22 30 00 2a 00 0d 08 08 15 0e 2b 00 00 00 0d 15 08 08 0e 00 00 2a 0b 22 22 22 22 22 
+22 22 22 22 22 0b 00 00 00 0b 2c 00 00 30 00 2b 00 00 0b 00 00 00 0b 00 00 00 30 22 22 22 22 22 
+22 22 22 22 22 14 09 00 00 0c 00 00 00 14 2f 09 00 07 13 00 2b 00 0c 2c 00 07 13 22 22 22 22 22 
+22 22 22 22 22 0b 2c 00 00 00 00 00 2c 30 2a 00 00 00 0b 2a 00 00 00 00 2c 00 0b 22 22 22 22 22 
+22 22 22 22 22 0b 00 00 00 0a 00 2c 00 30 2b 00 00 00 0b 00 00 00 0a 00 2a 2b 0b 22 22 22 22 22 
+22 22 22 22 22 30 00 2a 2b 0b 00 00 2c 30 2a 00 00 00 30 00 00 00 0b 00 00 00 0b 22 22 22 22 22 
+22 22 22 22 22 0f 0e 2b 00 30 00 00 00 0b 00 00 2c 00 0b 00 00 2b 0b 2c 2a 0d 10 22 22 22 22 22 
+22 22 22 22 22 22 30 2c 00 0f 0e 2b 00 0b 00 00 00 2c 0b 2c 2b 0d 10 00 00 0b 22 22 22 22 22 22 
+22 22 22 22 22 22 0f 0e 2c 00 14 08 08 15 09 00 07 08 15 08 08 13 00 00 0d 10 22 22 22 22 22 22 
+22 22 22 22 22 22 22 0b 00 2a 0b 2c 2a 00 00 00 2a 00 00 2b 2a 0b 2c 00 30 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 0f 0e 00 30 2a 00 00 00 2c 2b 00 2a 00 00 0b 00 0d 10 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 0f 08 13 00 2b 00 00 00 00 00 00 00 00 14 08 10 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 0f 08 0e 2c 00 2b 00 00 00 0d 2f 10 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 0f 08 2f 08 2f 2f 08 10 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 
+22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 

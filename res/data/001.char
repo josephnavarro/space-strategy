@@ -1,0 +1,47 @@
+.name Bertha
+.hp 16
+.atk 4
+.def 2
+.spd 9
+.move 5
+.range 1
+
+.set Unarmed
+.atk 0
+.def 0
+.spd 0
+.move 1
+.range 0
+.image 0 1
+.uses -1
+.end
+
+.set Blaster
+.atk 2
+.def 0
+.spd 0
+.move 0
+.range 1 1
+.image 1 1
+.uses 10
+.end
+
+.set Bazooka
+.atk 10
+.def 0
+.spd 0
+.move 0
+.range 1 1
+.image 5 1
+.uses 2
+.end
+
+.set Thrower
+.atk 0
+.def 1
+.spd 1
+.move 0
+.range 1 1
+.image 6 1
+.uses 10
+.end

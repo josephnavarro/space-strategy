@@ -1,0 +1,47 @@
+.name Doris
+.hp 20
+.atk 6
+.def 5
+.spd 7
+.move 6
+.range 1
+
+.set Unarmed
+.atk 0
+.def 0
+.spd 0
+.move 1
+.range 0
+.image 0 3
+.uses -1
+.end
+
+.set X-Rifle
+.atk 0
+.def 1
+.spd 0
+.move 0
+.range 1 1
+.image 2 3
+.uses 10
+.end
+
+.set Blaster
+.atk 2
+.def 0
+.spd 0
+.move 0
+.range 1 1
+.image 1 3
+.uses 10
+.end
+
+.set Machete
+.atk 3
+.def 0
+.spd 0
+.move 0
+.range 0
+.image 4 3
+.uses 10
+.end
