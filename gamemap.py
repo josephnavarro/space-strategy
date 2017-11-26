@@ -112,15 +112,15 @@ class Map:
         self.height = len(self.map)
         self.width  = len(self.map[0])
 
-        self.stars = [[random.randint(0,self.width*TILE_WIDTH),random.randint(0,self.height*TILE_HEIGHT)] for x in xrange(512)]
+        self.stars = [[random.randint(0,self.width*TILE_WIDTH),random.randint(0,self.height*TILE_HEIGHT)] for x in range(512)]
 
         self.images = {}
-        keys = ['%02x'%(x) for x in xrange(210)]
+        keys = ['%02x'%(x) for x in range(210)]
         sheet = pygame.image.load('res/img/world.png').convert()
         sheet.set_colorkey((255,0,255))
 
-        for y in xrange(6):
-            for x in xrange(35):
+        for y in range(6):
+            for x in range(35):
                 sub = sheet.subsurface(x*TILE_WIDTH, offset+y*TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT)
                 key = keys[x+y*35]
                 self.images[key] = sub
@@ -145,6 +145,6 @@ class Map:
 
     ## Draws the map on the target surface
     def render(self, surface):
-        for y in xrange(len(self.map)):
-            for x in xrange(len(self.map[y])):
+        for y in range(len(self.map)):
+            for x in range(len(self.map[y])):
                 surface.blit(self.images[self.map[y][x]], (x*TILE_WIDTH, y*TILE_HEIGHT))

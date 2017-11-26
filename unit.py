@@ -1,4 +1,4 @@
-import pygame
+import pygame, random
 from constant import *
 from moveset import Set
 
@@ -68,17 +68,17 @@ class Unit(object):
 
     def new_dmap(self):
         self.dmap = []
-        for i in xrange(self._map.height):
+        for i in range(self._map.height):
             array = []
-            for j in xrange(self._map.width):
+            for j in range(self._map.width):
                 array.append(999)
             self.dmap.append(array)
 
     def new_mmap(self):
         self.mmap = []
-        for i in xrange(self._map.height):
+        for i in range(self._map.height):
             array = []
-            for j in xrange(self._map.width):
+            for j in range(self._map.width):
                 array.append(999)
             self.mmap.append(array)
 
@@ -211,8 +211,8 @@ class Unit(object):
         lim = self.sets[self.current].movement+self.sets[self.current].range+self.base_movement+self.base_range
         m_lim = self.sets[self.current].movement+self.base_movement
         
-        for i in xrange(len(self.mmap)):
-            for j in xrange(len(self.mmap[i])):
+        for i in range(len(self.mmap)):
+            for j in range(len(self.mmap[i])):
                 ir_st = self.sets[self.current].strict and self.mmap[i][j] == lim-1
                 ir_ls = not self.sets[self.current].strict and self.mmap[i][j] < lim
 
@@ -283,8 +283,8 @@ class Unit(object):
         while changed:
             changed = False
             ## Do a Dijkstra map transformation
-            for i in xrange(len(self.mmap)):
-                for j in xrange(len(self.mmap[i])):
+            for i in range(len(self.mmap)):
+                for j in range(len(self.mmap[i])):
                     
                     ## If the tile is not a wall, mutate its surrounding cells
                     if self._map.get_passable(j,i):
@@ -348,8 +348,8 @@ class Unit(object):
 
             while changed:
                 changed = False
-                for i in xrange(len(self.dmap)):
-                    for j in xrange(len(self.dmap[i])):
+                for i in range(len(self.dmap)):
+                    for j in range(len(self.dmap[i])):
                         if self._map.get_passable(j,i) and (i,j) not in enemy_pos and self.mmap[i][j]+1 < lim:
 
                             ## Choose all orthogonally adjacent cells
@@ -380,7 +380,7 @@ class Unit(object):
         self.directions = None
         self.counter = 0
                             
-    def move(self, units):
+    def move(self, units, clock):
         if self.directions:
             d = min(self.directions, key=lambda x:x[0])
 

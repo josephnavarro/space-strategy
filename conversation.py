@@ -6,12 +6,12 @@ class Conversation:
         self.dialogue = []
         string_part = []
         count = 0
-        for x in xrange(len(strings)):
+        for x in range(len(strings)):
             string_part.append(Text(strings[x], scrollable = True))
             count += 1
             if count >= 3 or x == len(strings)-1:
                 n = len(string_part)
-                for i in xrange(3-n):
+                for i in range(3-n):
                     string_part.append(Text('', scrollable = True))
                 self.dialogue.append(string_part)
                 count = 0

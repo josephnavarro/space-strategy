@@ -64,18 +64,18 @@ class Main:
 
         self.frame = []
         self.bubble = []
-        for y in xrange(3):
+        for y in range(3):
             self.frame.append([])
             self.bubble.append([])
-            for x in xrange(3):
+            for x in range(3):
                 self.frame[y].append(frame.subsurface(56+x*8,y*8,8,8))
                 self.bubble[y].append(frame.subsurface(80+x*8,y*8,8,8))
 
         self.hp_bar = []
-        for x in xrange(8):
+        for x in range(8):
             self.hp_bar.append(frame.subsurface(x*2,0,2,12))
         self.hp_fill = [[],[],[]]
-        for x in xrange(6):
+        for x in range(6):
             self.hp_fill[0].append(frame.subsurface(x*2,12,2,12))
             self.hp_fill[1].append(frame.subsurface(12+x*2,12,2,12))
             self.hp_fill[2].append(frame.subsurface(24+x*2,12,2,12))
@@ -142,7 +142,7 @@ class Main:
             width = int(length * unit.display_hp / float(unit.max_hp+unit.modifier[0]))
             width_2 = int(length * unit.hp / float(unit.max_hp+unit.modifier[0]))
         
-        for x in xrange(length+1):
+        for x in range(length+1):
             if x == 0 or x == length:
                 surface.blit(self.hp_bar[0], (pos[0]+x,pos[1]))
             elif x == 3 or x == length - 3:
@@ -154,7 +154,7 @@ class Main:
             else:
                 surface.blit(self.hp_bar[4], (pos[0]+x,pos[1]))
                 
-        for x in xrange(length+1):
+        for x in range(length+1):
             if x == width-1:
                 if x == 1 or x == length-1:
                     surface.blit(self.hp_fill[0][0], (pos[0]+x-1,pos[1]))
@@ -170,7 +170,7 @@ class Main:
                 elif 2 < x < length-2:
                     surface.blit(self.hp_fill[0][5], (pos[0]+x-1,pos[1]))
                 
-        for x in xrange(length+1):
+        for x in range(length+1):
             if x == width_2-1:
                 if x == 1 or x == length-1:
                     surface.blit(self.hp_fill[index][0], (pos[0]+x-1,pos[1]))
@@ -187,13 +187,13 @@ class Main:
                     surface.blit(self.hp_fill[index][5], (pos[0]+x-1,pos[1]))
 
     def draw_bubble(self, surface, pos, target, box, bounds):
-        height = box.get_height()/8
-        width = box.get_width()/8
+        height = box.get_height()//8
+        width = box.get_width()//8
 
         box.fill((255,0,255))
 
-        for y in xrange(height/2,height):
-            for x in xrange(width):
+        for y in range(height//2,height):
+            for x in range(width):
                 if (x,y) == (0,height/2):
                     box.blit(self.bubble[0][0], (x*8,y*8))
                 elif (x,y) == (width-1,height/2):
@@ -225,11 +225,11 @@ class Main:
         surface.blit(box, pos)        
         
     def draw_box(self, surface):
-        height = surface.get_height()/8
-        width = surface.get_width()/8
+        height = surface.get_height()//8
+        width = surface.get_width()//8
         
-        for y in xrange(height):
-            for x in xrange(width):
+        for y in range(height):
+            for x in range(width):
                 if (x,y) == (0,0):
                     surface.blit(self.frame[0][0], (x*8,y*8))
                 elif (x,y) == (width-1,0):
@@ -372,7 +372,7 @@ class Main:
                         cursor_dy = 0
                         menu_choice = 0
                         unit_follow = True
-                        unit.move(self.units)
+                        unit.move(self.units, clock)
                         self.cursor.x = unit.pos[0]
                         self.cursor.y = unit.pos[1]
                         
@@ -565,7 +565,7 @@ class Main:
                 self.bold_text.update('Level up!')
                 self.bold_text.draw(surface, (left+12,top+4))
                 
-                for x in xrange(5):
+                for x in range(5):
                     self.bold_text.update('%s' %(stat_string[x]))
                     self.bold_text.draw(surface, (left+12,top+30+16*x))
                     self.font_text.update('+%d' %(stat_up[x]), color = [0,248,0] if stat_up[x] > 0 else [255,255,255])
@@ -615,13 +615,13 @@ class Main:
                 self.font_text.update('Lv.%d' %(selected.level))
                 self.font_text.draw(surface, (left+12+self.bold_text.width+4, top+4))
                 
-                for x in xrange(3):
+                for x in range(3):
                     self.bold_text.update('%s' %(stat_string[x+1]))
                     self.bold_text.draw(surface, (left+12,top+60+16*x))
                     self.font_text.update('%d+%d' %(select_stats[x], select_sets[x]))
                     self.font_text.draw(surface, (left+12+self.stat_box.get_width()/4,top+60+16*x))
                     
-                for x in xrange(2):
+                for x in range(2):
                     self.bold_text.update('%s' %(stat_string[x+4]))
                     self.bold_text.draw(surface, (left+100,top+60+16*x))
                     self.font_text.update('%d+%d' %(select_stats[x+3], select_sets[x+3]))
@@ -655,7 +655,7 @@ class Main:
                                             unit.sets[unit.current].speed]
 
                             surface.blit(self.rate_box, (left,top))
-                            for x in xrange(3):
+                            for x in range(3):
                                 self.bold_text.update('%s' %(stat_string[x+1]))
                                 self.bold_text.draw(surface, (left+12,top+4+16*x))
                                 self.font_text.update('%d+%d' %(select_stats[x], select_sets[x]))
@@ -663,7 +663,7 @@ class Main:
                                 
                             left = WIDTH-self.rate_box.get_width()-8
                             surface.blit(self.rate_box, (left,top))
-                            for x in xrange(3):
+                            for x in range(3):
                                 self.bold_text.update('%s' %(stat_string[x+1]))
                                 self.bold_text.draw(surface, (left+12,top+4+16*x))
                                 self.font_text.update('%d+%d' %(unit_stats[x], unit_sets[x]))
@@ -754,7 +754,7 @@ class Main:
                 top = 8
                 left = WIDTH-self.menu_box.get_width()-8
                 surface.blit(self.menu_box, (left,top))
-                for x in xrange(len(menu_string)):
+                for x in range(len(menu_string)):
                     color = [255,255,255]
                     if x == menu_choice and not (x == 2 and selected.has_used_item) and not (x == 1 and selected.has_moved):
                         color = [248,248,0]
@@ -774,7 +774,7 @@ class Main:
                     surface.blit(self.set_box, (left,top))
                     surface.blit(self.set_box, (left+self.set_box.get_width(),top))
                     
-                    for x in xrange(8):
+                    for x in range(8):
                         color = [255,255,255]
                         if x == selected.current:
                             color = [248,248,0]
@@ -786,7 +786,7 @@ class Main:
                         
                         self.font_text.draw(surface, (left+12, top+4+x*16))
 
-                    for x in xrange(8):
+                    for x in range(8):
                         if x == 0:
                             string1 = '+%d' %(selected.sets[selected.current].attack)
                             string2 = 'Atk'
@@ -920,7 +920,7 @@ class Main:
             if self.state == SCROLL:
                 scroll_y += 0.5
                 if fade_out <= 0:
-                    for x in xrange(len(self.map.scroll)):
+                    for x in range(len(self.map.scroll)):
                         self.map.scroll[x].draw(surface, (WIDTH/2-self.map.scroll[x].width/2,HEIGHT-int(scroll_y)+x*16))
                         if x == len(self.map.scroll) - 1 and HEIGHT-scroll_y+x*16 <= -64:
                             fade_out = 3.0
@@ -1376,8 +1376,8 @@ class Main:
                                 m_lim = selected.sets[selected.current].movement+selected.base_movement
                                 lim = m_lim + r_lim
                                 
-                                for i in xrange(len(self.map.map)):
-                                    for j in xrange(len(self.map.map[i])):
+                                for i in range(len(self.map.map)):
+                                    for j in range(len(self.map.map[i])):
 
                                         if not found and x == j and y == i:
                                             in_range_strict = selected.sets[selected.current].strict and selected.mmap[i][j] == r_lim
@@ -1388,8 +1388,8 @@ class Main:
                                                 selected.attack_target = i, j
                                                 found = True
                                             else:
-                                                for p in xrange(-z,z+1):
-                                                    for q in xrange(-z,z+1):
+                                                for p in range(-z,z+1):
+                                                    for q in range(-z,z+1):
                                                         if abs(p)+abs(q) <= z and not found:
                                                             try:
                                                                 ir_st = selected.sets[selected.current].strict and selected.mmap[i+p][j+q] == r_lim+1
