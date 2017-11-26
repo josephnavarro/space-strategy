@@ -1433,6 +1433,8 @@ class Main:
                 else:
                     self.cursor.x = round(self.cursor.x)
 
+            pygame.display.set_caption("%.2d" %(clock.get_fps()))
+
 if __name__ == '__main__':
     main = Main()
     main.main()       

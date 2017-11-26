@@ -37,6 +37,7 @@ class Map:
         ## Open the file and read in the ints
         with open(filename, 'r') as f:
             data = f.readlines()
+            data = [d for d in data if len(d) != 0]
             for line in data:
                 line = line.lstrip().rstrip()
                 if line.startswith('.cursor'):
