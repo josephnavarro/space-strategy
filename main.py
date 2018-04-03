@@ -1354,56 +1354,70 @@ class Main:
                                 self.state = MENU
 
             if turn == ENEMY_TURN and scale == 1.0 and cooldown <= 0 and not enemy_win:
-                unit_pos = [(int(round(unit.pos[1])), int(round(unit.pos[0]))) for unit in self.units]
+                e_units    = [u for u in self.units if u.is_enemy and not u.has_moved]
                 
-                for unit in self.units:
-                    if not selected and unit.is_enemy and not unit.has_moved:
-                        ## Select the unit and move the cursor onto it
+                for unit in e_units:
+                    if not selected:
                         found = False
                         selected = unit
-                        self.cursor.x = selected.pos[0]
-                        self.cursor.y = selected.pos[1]
-                        selected.select(self.units)
-                        other_units = self.units[:]
-                        random.shuffle(other_units)
+                        
+                    else:
+                        target_pos = unit.pos[:]
+                        dx = target_pos[0] - self.cursor.x
+                        dy = target_pos[1] - self.cursor.y
+                        d  = math.sqrt(dx*dx + dy*dy)
+                        if d > 0:
+                            cursor_dx = dx / d
+                            cursor_dy = dy / d
+                        
+                        if abs(round(self.cursor.x - target_pos[0] - cursor_dx * 0.25)) != 0 or abs(round(self.cursor.y - target_pos[1] - cursor_dy * 0.25)) != 0:
+                            self.cursor.x += cursor_dx * 0.5
+                            self.cursor.y += cursor_dy * 0.5
+                        else:
+                            self.cursor.x = target_pos[0]#int(round(self.cursor.x))
+                            self.cursor.y = target_pos[1]#int(round(self.cursor.y))
 
-                        for other in other_units:
-                            if other != unit and not other.is_enemy:
-                                y = int(round(other.pos[1]))
-                                x = int(round(other.pos[0]))
-                                z = unit.sets[unit.current].range + unit.base_range
-                                r_lim = selected.sets[selected.current].range+selected.base_range
-                                m_lim = selected.sets[selected.current].movement+selected.base_movement
-                                lim = m_lim + r_lim
-                                
-                                for i in range(len(self.map.map)):
-                                    for j in range(len(self.map.map[i])):
+                            selected.select(self.units)
+                            other_units = self.units[:]
+                            random.shuffle(other_units)
 
-                                        if not found and x == j and y == i:
-                                            in_range_strict = selected.sets[selected.current].strict and selected.mmap[i][j] == r_lim
-                                            in_range_loose  = not selected.sets[selected.current].strict and selected.mmap[i][j] <= r_lim
-                                            
-                                            if in_range_strict or in_range_loose:
-                                                selected.stop(self.units)
-                                                selected.attack_target = i, j
-                                                found = True
-                                            else:
-                                                for p in range(-z,z+1):
-                                                    for q in range(-z,z+1):
-                                                        if abs(p)+abs(q) <= z and not found:
-                                                            try:
-                                                                ir_st = selected.sets[selected.current].strict and selected.mmap[i+p][j+q] == r_lim+1
-                                                                ir_ls = not selected.sets[selected.current].strict and selected.mmap[i+p][j+q] <= lim
-                                                                if (ir_st or ir_ls) and selected.set_target(j+q,i+p,self.units):
-                                                                    selected.attack_target = i, j
-                                                                    found = True
-                                                            except IndexError:
-                                                                pass
+                            for other in other_units:
+                                if other != unit and not other.is_enemy:
+                                    y = int(round(other.pos[1]))
+                                    x = int(round(other.pos[0]))
+                                    z = unit.sets[unit.current].range + unit.base_range
+                                    r_lim = selected.sets[selected.current].range+selected.base_range
+                                    m_lim = selected.sets[selected.current].movement+selected.base_movement
+                                    lim = m_lim + r_lim
+                                    
+                                    for i in range(len(self.map.map)):
+                                        for j in range(len(self.map.map[i])):
+
+                                            if not found and x == j and y == i:
+                                                in_range_strict = selected.sets[selected.current].strict and selected.mmap[i][j] == r_lim
+                                                in_range_loose  = not selected.sets[selected.current].strict and selected.mmap[i][j] <= r_lim
+                                                
+                                                if in_range_strict or in_range_loose:
+                                                    selected.stop(self.units)
+                                                    selected.attack_target = i, j
+                                                    found = True
+                                                else:
+                                                    for p in range(-z,z+1):
+                                                        for q in range(-z,z+1):
+                                                            if abs(p)+abs(q) <= z and not found:
+                                                                try:
+                                                                    ir_st = selected.sets[selected.current].strict and selected.mmap[i+p][j+q] == r_lim+1
+                                                                    ir_ls = not selected.sets[selected.current].strict and selected.mmap[i+p][j+q] <= lim
+                                                                    if (ir_st or ir_ls) and selected.set_target(j+q,i+p,self.units):
+                                                                        selected.attack_target = i, j
+                                                                        found = True
+                                                                except IndexError:
+                                                                    pass
                                 
-                        if not found:
-                            unit.stop(self.units)
-                            unit.end_move = True
-                            turn_wait = 0.25
+                            if not found:
+                                unit.stop(self.units)
+                                unit.end_move = True
+                                turn_wait = 0.25
 
             k = pygame.key.get_pressed()
             if self.state == SCROLL and (k[K_z] or k[K_x] or k[K_a] or k[K_SPACE] or k[K_RETURN]):
