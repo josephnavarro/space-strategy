@@ -1,2 +1,10 @@
 # Space Strategy
-A turn-based, grid-based, tactical strategy game set in space. Utilizes Dijkstra's algorithm for pathfinding. Requires Python 2.7 and the python-pygame dependency. Currently not in a finished state, as it contains only one level.
+
+## Overview
+Grid-based tactics game. Uses Dijkstra's algorithm for enemy AI pathfinding, as well as for displaying player-controlled units' movement cells. Work in progress. Graphics courtesy of **[Oryx Design Lab](https://www.oryxdesignlab.com/sprites/)**.
+
+![Screenshot](screenshots/screenshot-1.png)
+
+## Dependencies
+* **[Pygame](https://www.pygame.org/news)** 1.9.3+
+* **[Python](https://www.python.org/)** 3.4+
